@@ -1,7 +1,25 @@
 import React from 'react'
+import ContentToDo from './ContentToDo.Component'
 
 class TableComponent extends React.Component {
+  constructor(params) {
+    super(params);
+    console.log(this.props.items)
+  }
+  checkLevel(input){
+    if(input===1){
+      return "Medium"
+    }else if(input===0){
+      return "Small"
+    }else{
+      return  "High"
+    }
+  }
   render() {
+    const imtes = this.props.items;
+    const elementItem = imtes.map((item, index) => {
+      return <ContentToDo name={item.name} key={index} level={this.checkLevel(item.level)}/>
+    })
     return (
       <div className="col-12 mt-5">
         <div className="card mb-3">
@@ -17,39 +35,7 @@ class TableComponent extends React.Component {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique commodi
-                    libero perferendis temporibus enim delectus eos tempore autem odit repellat ab
-                            optio blanditiis amet.</td>
-                  <td className="badge badge-danger">High</td>
-                  <td>
-                    <a href="/" role="button" className="btn btn-warning">Edit</a>
-                    <a href="/" role="button" className="btn btn-danger">Delete</a>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique commodi
-                    libero perferendis temporibus enim delectus eos tempore autem odit repellat ab
-                            optio blanditiis amet.</td>
-                  <td className="badge badge-info">Medium</td>
-                  <td>
-                    <a href="/" role="button" className="btn btn-warning">Edit</a>
-                    <a href="/" role="button" className="btn btn-danger">Delete</a>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique commodi
-                    libero perferendis temporibus enim delectus eos tempore autem odit repellat ab
-                            optio blanditiis amet.</td>
-                  <td className="badge badge-success">Small</td>
-                  <td>
-                    <a href="/" role="button" className="btn btn-warning">Edit</a>
-                    <a href="/" role="button" className="btn btn-danger">Delete</a>
-                  </td>
-                </tr>
+                {elementItem}
               </tbody>
             </table>
           </div>

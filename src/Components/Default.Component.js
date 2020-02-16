@@ -9,7 +9,23 @@ class Todo extends React.Component {
     super(params)
     this.state = {
       isShowAddTask: false,
-      nameButtonAdd: 'Show Form Add Task'
+      nameButtonAdd: 'Show Form Add Task',
+      items: [{
+        name: "Đánh răng",
+        level: 2, //0 Small 1: Medium, 2:High,
+      },
+      {
+        name: "Ăn sáng",
+        level: 2, //0 Small 1: Medium, 2:High,
+      },
+      {
+        name: "Lau dọn nhà cửa",
+        level: 1, //0 Small 1: Medium, 2:High,
+      },
+      {
+        name: "Chơi game",
+        level: 0, //0 Small 1: Medium, 2:High,
+      }]
     }
     this.ShowForm = this.ShowForm.bind(this)
   }
@@ -17,13 +33,13 @@ class Todo extends React.Component {
     this.setState({
       isShowAddTask: !this.state.isShowAddTask
     })
-    if(this.state.isShowAddTask === true){
+    if (this.state.isShowAddTask === true) {
       this.setState({
-        nameButtonAdd:'Show Form Add Task'
+        nameButtonAdd: 'Show Form Add Task'
       })
-    }else{
+    } else {
       this.setState({
-        nameButtonAdd:"Hide Form Add Task"
+        nameButtonAdd: "Hide Form Add Task"
       })
     }
   }
@@ -32,6 +48,8 @@ class Todo extends React.Component {
     if (this.state.isShowAddTask) {
       element = <Form />
     };
+    let items = this.state.items;
+    //console.log('this.state.items', this.state.items)
     return (
       <div>
         {/* Title: START */}
@@ -56,7 +74,7 @@ class Todo extends React.Component {
           {element}
           {/*FORM  END*/}
           {/*CARD START*/}
-          <TableComponent />
+          <TableComponent items={items} />
           {/*CARD END*/}
         </div>
       </div>
