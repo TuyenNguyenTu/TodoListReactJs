@@ -7,7 +7,7 @@ class ContentTodo extends React.Component {
         <th scope="row">{this.props.index}</th>
         <td>{this.props.name}
         </td>
-        <td className="badge badge-danger">{this.props.level}</td>
+        {this.props.rowLevel}
         <td>
           <a href="/" role="button" className="btn btn-warning">Edit</a>
           <a href="/" role="button" className="btn btn-danger">Delete</a>

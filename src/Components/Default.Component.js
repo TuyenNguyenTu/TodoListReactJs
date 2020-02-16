@@ -45,11 +45,13 @@ class Todo extends React.Component {
           {/*Search START*/}
           <Search />
           {/*Search END*/}
+
           {/*Sort  START*/}
           <div className="col-3">
             <Sort />
           </div>
           {/*Sort END*/}
+          
           {/*ADD  START*/}
           <div className="col-5">
             <button type="button" className="btn btn-info btn-block" onClick={this.ShowForm}>{this.state.nameButtonAdd}</button>

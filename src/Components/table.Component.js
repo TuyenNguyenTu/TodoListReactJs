@@ -4,21 +4,34 @@ import ContentToDo from './ContentToDo.Component'
 class TableComponent extends React.Component {
   constructor(params) {
     super(params);
+    this.state = {
+
+    }
     console.log(this.props.items)
   }
-  checkLevel(input){
-    if(input===1){
+  checkLevel(input) {
+    if (input === 1) {
       return "Medium"
-    }else if(input===0){
+    } else if (input === 0) {
       return "Small"
-    }else{
-      return  "High"
+    } else {
+      return "High"
     }
   }
   render() {
     const imtes = this.props.items;
     const elementItem = imtes.map((item, index) => {
-      return <ContentToDo index={index+1} name={item.name} key={index} level={this.checkLevel(item.level)}/>
+      let elementLevel = null;
+      if (item.level === 0) {
+        elementLevel = <td className="badge badge-success">Small</td>
+      }
+      else if (item.level === 1) {
+        elementLevel = <td className="badge badge-info">Medium</td>
+      }
+      else {
+        elementLevel = <td className="badge badge-danger">High</td>
+      }
+      return <ContentToDo index={index + 1} name={item.name} key={item.id} rowLevel={elementLevel} />
     })
     return (
       <div className="col-12 mt-5">
