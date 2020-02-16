@@ -18,7 +18,7 @@ class TableComponent extends React.Component {
   render() {
     const imtes = this.props.items;
     const elementItem = imtes.map((item, index) => {
-      return <ContentToDo name={item.name} key={index} level={this.checkLevel(item.level)}/>
+      return <ContentToDo index={index+1} name={item.name} key={index} level={this.checkLevel(item.level)}/>
     })
     return (
       <div className="col-12 mt-5">

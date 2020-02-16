@@ -3,29 +3,15 @@ import Search from './Search.Component'
 import Sort from './Sort.Component'
 import Form from './FormAdd.Component'
 import TableComponent from './table.Component'
-import TitleComponent from './Title.Component'
+import TitleComponent from './Title.Component';
+import ListTask from './ListTask'
 class Todo extends React.Component {
   constructor(params) {
     super(params)
     this.state = {
       isShowAddTask: false,
       nameButtonAdd: 'Show Form Add Task',
-      items: [{
-        name: "Đánh răng",
-        level: 2, //0 Small 1: Medium, 2:High,
-      },
-      {
-        name: "Ăn sáng",
-        level: 2, //0 Small 1: Medium, 2:High,
-      },
-      {
-        name: "Lau dọn nhà cửa",
-        level: 1, //0 Small 1: Medium, 2:High,
-      },
-      {
-        name: "Chơi game",
-        level: 0, //0 Small 1: Medium, 2:High,
-      }]
+      items: ListTask
     }
     this.ShowForm = this.ShowForm.bind(this)
   }

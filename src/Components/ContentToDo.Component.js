@@ -4,7 +4,7 @@ class ContentTodo extends React.Component {
   render() {
     return (
       <tr>
-        <th scope="row">1</th>
+        <th scope="row">{this.props.index}</th>
         <td>{this.props.name}
         </td>
         <td className="badge badge-danger">{this.props.level}</td>
