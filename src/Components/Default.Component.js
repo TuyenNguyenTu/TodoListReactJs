@@ -14,6 +14,8 @@ class Todo extends React.Component {
       items: ListTask
     }
     this.ShowForm = this.ShowForm.bind(this)
+    this.closeForm = this.closeForm.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
   ShowForm() {
     this.setState({
@@ -29,13 +31,39 @@ class Todo extends React.Component {
       })
     }
   }
+  closeForm() {
+    this.setState({
+      isShowAddTask: false
+    });
+    if (this.state.isShowAddTask === true) {
+      this.setState({
+        nameButtonAdd: 'Show Form Add Task'
+      })
+    } else {
+      this.setState({
+        nameButtonAdd: "Hide Form Add Task"
+      })
+    }
+  }
+  //Get Value
+  handleSubmit(item) {
+    let items = this.state.items;
+    items.push({
+      id: item.id,
+      name: item.name,
+      level: item.level
+    })
+    this.setState({
+      items: items
+    })
+  }
   render() {
     let element = null;
     if (this.state.isShowAddTask) {
-      element = <Form />
+      //gọi = props
+      element = <Form onClickCancle={this.closeForm} onClickSubmit={this.handleSubmit} />
     };
     let items = this.state.items;
-    //console.log('this.state.items', this.state.items)
     return (
       <div>
         {/* Title: START */}
@@ -51,7 +79,7 @@ class Todo extends React.Component {
             <Sort />
           </div>
           {/*Sort END*/}
-          
+
           {/*ADD  START*/}
           <div className="col-5">
             <button type="button" className="btn btn-info btn-block" onClick={this.ShowForm}>{this.state.nameButtonAdd}</button>
